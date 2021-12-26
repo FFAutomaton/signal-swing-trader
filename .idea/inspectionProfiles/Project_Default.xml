@@ -1,0 +1,49 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyInterpreterInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="21">
+            <item index="0" class="java.lang.String" itemvalue="rsa" />
+            <item index="1" class="java.lang.String" itemvalue="apache-beam" />
+            <item index="2" class="java.lang.String" itemvalue="coverage" />
+            <item index="3" class="java.lang.String" itemvalue="pydantic" />
+            <item index="4" class="java.lang.String" itemvalue="tornado" />
+            <item index="5" class="java.lang.String" itemvalue="pytest" />
+            <item index="6" class="java.lang.String" itemvalue="python-dotenv" />
+            <item index="7" class="java.lang.String" itemvalue="aioresponses" />
+            <item index="8" class="java.lang.String" itemvalue="asynctest" />
+            <item index="9" class="java.lang.String" itemvalue="pytest-asyncio" />
+            <item index="10" class="java.lang.String" itemvalue="redis" />
+            <item index="11" class="java.lang.String" itemvalue="opentracing-instrumentation" />
+            <item index="12" class="java.lang.String" itemvalue="fastapi" />
+            <item index="13" class="java.lang.String" itemvalue="firefly-logger" />
+            <item index="14" class="java.lang.String" itemvalue="aioredis" />
+            <item index="15" class="java.lang.String" itemvalue="opentracing" />
+            <item index="16" class="java.lang.String" itemvalue="pylint" />
+            <item index="17" class="java.lang.String" itemvalue="starlette" />
+            <item index="18" class="java.lang.String" itemvalue="aiohttp" />
+            <item index="19" class="java.lang.String" itemvalue="jaeger-client" />
+            <item index="20" class="java.lang.String" itemvalue="uvicorn" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8NamingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="N803" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyStubPackagesAdvertiser" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <list>
+          <option value="pyspark-stubs==3.0.0.post1" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
