@@ -7,6 +7,32 @@ class SwingTrader:
         self.length = len(series)
         self.processHighLows(series)
 
+    def al_sat_mod_hesapla2(self, tahmin, mod):
+        son_low = self.lowNodes[0]
+        bionceki_low = self.lowNodes[1]
+        son_high = self.highNodes[0]
+        bionceki_high = self.highNodes[1]
+        upperP = tahmin["High"]
+        lowerP = tahmin["Low"]
+        openP = tahmin["Open"]
+        self.karar = None
+        self.mod = mod
+        self.neden = None
+        if self.mod == 'alta kesti':
+            if openP > lowerP:
+                self.karar = 'al'
+                self.mod = None
+        elif self.mod == 'uste kesti':
+            if openP < upperP:
+                self.karar = 'sat'
+                self.mod = None
+        else:
+            self.karar = None
+            if openP < lowerP * 1.02:
+                self.mod = 'alta kesti'
+            elif openP > upperP * 0.98:
+                self.mod = 'uste kesti'
+
     def al_sat_mod_hesapla(self):
         son_low = self.lowNodes[0]
         bionceki_low = self.lowNodes[1]
@@ -60,3 +86,24 @@ class SwingTrader:
             prev = nodeList[i + 1] if i < _len - 1 else None
             nodeList[i].next = next
             nodeList[i].prev = prev
+
+    def markMajors(self, that):
+        self.lastMajorHigh = None
+        self.lastMajorLow = None
+        self.prevMajorHigh = None
+        self.prevMajorLow = None
+        self.majorHighs = []
+        self.majorLows = []
+        for i in range(0, len(self.highNodes)):
+        # while i >= 0:
+            node = self.highNodes[i]
+            node.calculateMajors("high", that)
+            if node.isMajorHigh:
+                self.majorHighs.append(node)
+
+        for k in range(0, len(self.lowNodes)):
+        # while k >= 0:
+            node = self.lowNodes[k]
+            node.calculateMajors("low", that)
+            if node.isMajorLow:
+                self.majorLows.append(node)
