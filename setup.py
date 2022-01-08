@@ -9,7 +9,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="swing_signaller",
+    name="swing_trader",
     version="1.0",
     author="turkish gekko",
     author_email="turkish-gekko@turkish-gekko.org",
