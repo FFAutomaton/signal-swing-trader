@@ -1,11 +1,12 @@
 class SimpleNode:
     def __init__(self, candle, i):
         self.index = i
-        self.Open_Time = candle.get("Open Time")
-        self.open = candle.get("Open")
-        self.high = candle.get("High")
-        self.low = candle.get("Low")
-        self.close = candle.get("Close")
+        self.open_ts_int = candle.get("open_ts_int")
+        self.open_ts_str = candle.get("open_ts_str")
+        self.open = candle.get("open")
+        self.high = candle.get("high")
+        self.low = candle.get("low")
+        self.close = candle.get("close")
 
 
 class Node(SimpleNode):

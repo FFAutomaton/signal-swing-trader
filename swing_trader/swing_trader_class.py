@@ -7,48 +7,6 @@ class SwingTrader:
         self.length = len(series)
         self.processHighLows(series)
 
-    def al_sat_mod_hesapla2(self, tahmin, mod):
-        son_low = self.lowNodes[0]
-        bionceki_low = self.lowNodes[1]
-        son_high = self.highNodes[0]
-        bionceki_high = self.highNodes[1]
-        upperP = tahmin["High"]
-        lowerP = tahmin["Low"]
-        openP = tahmin["Open"]
-        self.karar = None
-        self.mod = mod
-        self.neden = None
-        if self.mod == 'alta kesti':
-            if openP > lowerP:
-                self.karar = 'al'
-                self.mod = None
-        elif self.mod == 'uste kesti':
-            if openP < upperP:
-                self.karar = 'sat'
-                self.mod = None
-        else:
-            self.karar = None
-            if openP < lowerP * 1.02:
-                self.mod = 'alta kesti'
-            elif openP > upperP * 0.98:
-                self.mod = 'uste kesti'
-
-    def al_sat_mod_hesapla(self):
-        son_low = self.lowNodes[0]
-        bionceki_low = self.lowNodes[1]
-        son_high = self.highNodes[0]
-        bionceki_high = self.highNodes[1]
-
-        self.mod = None
-        self.neden = None
-
-        if son_low > bionceki_low and son_high > bionceki_high:
-            self.mod = 'al'
-        else:
-            self.mod = 'sat'
-
-        return self.mod
-
     def processHighLows(self, series):
         self.createNodes(series)
         self.markHighLows()
