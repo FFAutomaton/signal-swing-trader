@@ -19,11 +19,13 @@ class SwingTrader:
 
     def markHighLows(self):
         self.highNodes = []
+        self.majorHighs = []
         self.lowNodes = []
+        self.majorLows = []
         for node in self.nodes:
             node.calculateMinors()
-            node._isMajorHigh()
-            node._isMajorLow()
+            node.isMajorHigh = node._isMajorHigh()
+            node.isMajorLow = node._isMajorLow()
 
             if node.isMajorHigh:
                 self.majorHighs.append(node)
