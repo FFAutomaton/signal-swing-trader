@@ -6,7 +6,6 @@ class SwingTrader:
         self.nodes = []
         self.length = len(series)
         self.processHighLows(series)
-        self.markMajors(self)
 
     def processHighLows(self, series):
         self.createNodes(series)
@@ -23,9 +22,13 @@ class SwingTrader:
         self.lowNodes = []
         for node in self.nodes:
             node.calculateMinors()
-            # highCopy = copy.deepcopy(node)
-            # lowCopy = copy.deepcopy(node)
+            node._isMajorHigh()
+            node._isMajorLow()
 
+            if node.isMajorHigh:
+                self.majorHighs.append(node)
+            if node.isMajorLow:
+                self.majorLows.append(node)
             if node.isHigh:
                 self.highNodes.append(node)
             if node.isLow:
