@@ -6,6 +6,7 @@ class SwingTrader:
         self.nodes = []
         self.length = len(series)
         self.processHighLows(series)
+        self.markMajors(self)
 
     def processHighLows(self, series):
         self.createNodes(series)

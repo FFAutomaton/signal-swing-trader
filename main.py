@@ -7,7 +7,7 @@ def dosya_yukle(coin, baslangic, bitis, pencere):
     tum_data_dosya_adi = f'./coindata/{coin}/{coin}_{pencere}_all.csv'
     main_dataframe = pd.read_csv(tum_data_dosya_adi)
 
-    main_dataframe['open_ts_str'] = main_dataframe[["open_ts_str"]].apply(pd.to_datetime)
+    main_dataframe['open_ts_str'] = main_dataframe[["Open Time"]].apply(pd.to_datetime)
     main_dataframe = main_dataframe.sort_values(by='open_ts_str', ascending=False, ignore_index=True)
     main_dataframe = main_dataframe[main_dataframe['open_ts_str'] < baslangic].reset_index(drop=True)
     main_dataframe = main_dataframe.iloc[0:100]
@@ -25,5 +25,4 @@ if __name__ == '__main__':
     coin =_config.get("coin")
     series = dosya_yukle(coin, baslangic_gunu, bitis_gunu, pencere)
     swing_data = SwingTrader(series)
-    mod = swing_data.al_sat_mod_hesapla()
     print(swing_data)
