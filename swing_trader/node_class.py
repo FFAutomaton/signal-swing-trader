@@ -50,7 +50,7 @@ class Node(SimpleNode):
     def _isHigh(self):
         resistance = False
 
-        if not self.prev or not self.prev2nd or self.next or self.next2nd:
+        if not self.prev or not self.prev2nd or not self.next or not self.next2nd:
             return resistance
 
         if self.next and self.next2nd:
@@ -67,7 +67,7 @@ class Node(SimpleNode):
 
     def _isLow(self):
         support = False
-        if not self.prev or not self.prev2nd or self.next or self.next2nd:
+        if not self.prev or not self.prev2nd or not self.next or not self.next2nd:
             return support
 
         if self.next and self.next2nd:
