@@ -87,15 +87,8 @@ class Node(SimpleNode):
         if not self.prev or not self.prev2nd or not self.next or not self.next2nd:
             return resistance
 
-        if self.next and self.next2nd:
-            resistance = self.high >= self.prev.high and self.high >= self.next.high \
-                         and self.high >= self.next2nd.high and self.high >= self.prev2nd.high
-
-        elif self.next and not self.next2nd:
-            resistance = self.high >= self.prev.high and self.high >= self.next.high \
-                         and self.high >= self.prev2nd.high
-        elif not self.next and not self.next2nd:
-            resistance = self.high >= self.prev.high and self.high >= self.prev2nd.high
+        resistance = self.high >= self.prev.high and self.high >= self.next.high \
+                     and self.high >= self.next2nd.high and self.high >= self.prev2nd.high
 
         return resistance
 
@@ -104,13 +97,7 @@ class Node(SimpleNode):
         if not self.prev or not self.prev2nd or not self.next or not self.next2nd:
             return support
 
-        if self.next and self.next2nd:
-            support = self.low <= self.prev.low and self.low <= self.next.low \
-                      and self.low <= self.next2nd.low and self.low <= self.prev2nd.low
-        elif self.next and not self.next2nd:
-            support = self.low <= self.prev.low and self.low <= self.next.low \
-                      and self.low <= self.prev2nd.low
-        elif not self.next and not self.next2nd:
-            support = self.low <= self.prev.low and self.low <= self.prev2nd.low
+        support = self.low <= self.prev.low and self.low <= self.next.low \
+                  and self.low <= self.next2nd.low and self.low <= self.prev2nd.low
 
         return support

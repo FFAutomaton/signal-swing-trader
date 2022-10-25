@@ -10,6 +10,7 @@ class SwingTrader:
     def processHighLows(self, series):
         self.createNodes(series)
         self.markHighLows()
+        self.markMajors()
 
     def createNodes(self, series):
         self.nodes = []
@@ -19,18 +20,10 @@ class SwingTrader:
 
     def markHighLows(self):
         self.highNodes = []
-        self.majorHighs = []
         self.lowNodes = []
-        self.majorLows = []
         for node in self.nodes:
             node.calculateMinors()
-            node.isMajorHigh = node._isMajorHigh()
-            node.isMajorLow = node._isMajorLow()
 
-            if node.isMajorHigh:
-                self.majorHighs.append(node)
-            if node.isMajorLow:
-                self.majorLows.append(node)
             if node.isHigh:
                 self.highNodes.append(node)
             if node.isLow:
@@ -52,22 +45,19 @@ class SwingTrader:
             nodeList[i].prev = prev
 
     def markMajors(self, that):
-        self.lastMajorHigh = None
-        self.lastMajorLow = None
-        self.prevMajorHigh = None
-        self.prevMajorLow = None
+
         self.majorHighs = []
         self.majorLows = []
         for i in range(0, len(self.highNodes)):
         # while i >= 0:
             node = self.highNodes[i]
-            node.calculateMajors("high", that)
+            node.isMajorHigh = node._isMajorHigh()
             if node.isMajorHigh:
                 self.majorHighs.append(node)
 
         for k in range(0, len(self.lowNodes)):
         # while k >= 0:
             node = self.lowNodes[k]
-            node.calculateMajors("low", that)
+            node.isMajorLow = node._isMajorLow()
             if node.isMajorLow:
                 self.majorLows.append(node)
