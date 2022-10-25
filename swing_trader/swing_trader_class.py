@@ -44,8 +44,7 @@ class SwingTrader:
             nodeList[i].next = next
             nodeList[i].prev = prev
 
-    def markMajors(self, that):
-
+    def markMajors(self):
         self.majorHighs = []
         self.majorLows = []
         for i in range(0, len(self.highNodes)):
